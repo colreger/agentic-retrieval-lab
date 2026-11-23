@@ -1,10 +1,31 @@
-# Agentic Retrieval Lab
+# RAG Evaluation
 
 Agentic routing and retrieval evaluation for RAG with Nemotron and JEV (System One).
 
-**Planned GitHub repository name:** `agentic-retrieval-lab`
+RAG means **Retrieval-Augmented Generation**: generation supported by retrieved
+evidence. The repository name `agentic-retrieval-lab` describes its role as an
+experimental workspace for model-controlled retrieval decisions.
 
 Can a router recover missing evidence while sending fewer queries through an expensive re-ranker? This portfolio project extracts the routing logic and development findings from an ongoing master's thesis.
+
+## Current thesis direction — research plan, not new measured results
+
+The latest thesis formulation compares **Nemotron and JEV as iterative
+controllers of passage selection**, keeping the retrieval workflow fixed.
+Both begin with the same initial ranking, receive context under the same rules,
+have the same four actions and may perform at most two interventions. After an
+intervention the controller sees the updated passages before choosing again.
+
+The planned question is: how do the controllers differ in retrieval quality and
+end-to-end latency when they choose search steps from the evidence currently
+available? Re-ranking can only reorder the existing candidate pool; rewriting
+and searching again can change that pool. The evaluation therefore distinguishes
+ranking failures from missing relevant candidates.
+
+The current public `guarded_route` function executes **at most one action**.
+Its synthetic demo is not the proposed two-intervention comparison. No new
+completed results for that iterative comparison are claimed here. See
+[research status and evaluation boundaries](docs/research-status.md).
 
 ## Run the offline demo
 
